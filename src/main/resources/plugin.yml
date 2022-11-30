@@ -1,0 +1,15 @@
+name: SkyzeAPI
+version: '${project.version}'
+main: me.skyze.skyzeapi.SkyzeAPI
+api-version: 1.19
+authors: [ MichalHicz ]
+description: skyzeAPI paper 1.19.2 plugin
+commands:
+  grg:
+    description: Ogrgne typkov v okoli 5 blokov
+  davaj:
+    description: Givne vybrany item zo skyzeAPI
+  vianoce:
+    description: Vianocne prikazy
+  prirucka:
+    description: Ukaze prirucku ku skyzeAPI
