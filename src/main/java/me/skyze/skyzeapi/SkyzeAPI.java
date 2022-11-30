@@ -30,10 +30,9 @@ public final class SkyzeAPI extends JavaPlugin {
         // Listeners
         getServer().getPluginManager().registerEvents(new TeleportBowListener(), this);
         getServer().getPluginManager().registerEvents(new FlameStickListener(), this);
-        getServer().getPluginManager().registerEvents(new SwapHandFireworkListener(), this); // Vianocne
         getServer().getPluginManager().registerEvents(new CustomTreesListener(), this);
         getServer().getPluginManager().registerEvents(new DraciaKrvListener(), this);
-        getServer().getPluginManager().registerEvents(new VianoceThrowListener(), this); // Vianoce
+        getServer().getPluginManager().registerEvents(new VianoceListener(), this); // Vianoce
 
         //getServer().getPluginManager().registerEvents(new onJoin(), this);
 
