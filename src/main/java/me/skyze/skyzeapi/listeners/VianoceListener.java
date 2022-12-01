@@ -5,9 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Material;
-import org.bukkit.entity.Firework;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
@@ -22,17 +20,19 @@ public class VianoceListener implements Listener {
 
     private Random r = new Random();
 
-    @EventHandler
-    public void onSnowballThrow(ProjectileLaunchEvent e){
-
-        if (e.getEntity() instanceof Snowball s) {
-            if (s.getShooter() instanceof Player p) {
-                if (s.getNearbyEntities(1,1,1) instanceof Player pp) {
-                    pp.setHealth(pp.getHealth()-2);
-                }
-            }
-        }
-    }
+//    @EventHandler
+//    public void onSnowballThrow(ProjectileLaunchEvent e){
+//
+//        if (e.getEntity() instanceof Snowball s) {
+//            if (s.getShooter() instanceof Player p) {
+//                for (Entity ep : s.getNearbyEntities(1,1,1)) {
+//                    if (ep instanceof Mob pp) {
+//                        pp.setHealth(pp.getHealth() - 2);
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     @EventHandler
     public void onSwapHands(PlayerSwapHandItemsEvent e) {
@@ -57,7 +57,7 @@ public class VianoceListener implements Listener {
     public void onPlayerMove(PlayerMoveEvent e) {
         Player p = e.getPlayer();
         if (p.getInventory().contains(Material.GUNPOWDER)) {
-            if (r.nextInt(1000) < 5) {
+            if (r.nextInt(1000) < 2) {
                 Firework firework = p.getWorld().spawn(p.getLocation(), Firework.class);
                 FireworkMeta data = (FireworkMeta) firework.getFireworkMeta();
                 data.addEffects(FireworkEffect.builder().withColor(Color.RED).withColor(Color.GREEN).with(FireworkEffect.Type.BALL_LARGE).withFlicker().build());
