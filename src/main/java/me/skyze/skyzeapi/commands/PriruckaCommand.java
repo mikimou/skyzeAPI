@@ -17,6 +17,13 @@ public class PriruckaCommand implements CommandExecutor {
                 prirucka(1, p);
             } else if (args[0].equalsIgnoreCase("2")) {
                 //
+            } else if (args[0].equalsIgnoreCase("admin")) {
+                p.sendMessage(ChatColor.DARK_GRAY + "----------------------------------------"); // 20x -
+                p.sendMessage(ChatColor.YELLOW + "" + ChatColor.BOLD + "    ADMIN PRIRUCKA skyzeAPI str. 1/1");
+                p.sendMessage("");
+                p.sendMessage(ChatColor.DARK_AQUA+""+ChatColor.BOLD+"/davaj <custom_item> <pocet>" +ChatColor.GOLD+""+ChatColor.ITALIC+"  Givne item zo skyzeAPI");
+                p.sendMessage("");
+                p.sendMessage(ChatColor.DARK_GRAY + "----------------------------------------"); // 20x -
             }
         }
         return true;
