@@ -16,7 +16,7 @@ public class VianoceCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player p) {
             //if (p.hasPermission("skyzeapi.vianoce")) {
-            if (p.getName().equalsIgnoreCase("misko_22")) {
+            if (p.getName().equalsIgnoreCase("misko_22")||p.getName().equalsIgnoreCase("KingDiri")) {
                 if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
                     p.sendMessage(ChatColor.DARK_GRAY + "----------------------------------------"); // 20x -
                     p.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "    VIANOCNE PRIKAZY");

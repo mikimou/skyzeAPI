@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
@@ -21,15 +22,13 @@ public class VianoceListener implements Listener {
     private Random r = new Random();
 
 //    @EventHandler
-//    public void onSnowballThrow(ProjectileLaunchEvent e){
+//    public void onSnowballThrow(EntityDamageByEntityEvent e){
 //
-//        if (e.getEntity() instanceof Snowball s) {
-//            if (s.getShooter() instanceof Player p) {
-//                for (Entity ep : s.getNearbyEntities(1,1,1)) {
-//                    if (ep instanceof Mob pp) {
-//                        pp.setHealth(pp.getHealth() - 2);
-//                    }
-//                }
+//        if (e.getEntity() instanceof Player damaged) {
+//            if (e.getDamager().getType() == EntityType.SNOWBALL) {
+//                    damaged.setHealth(damaged.getHealth() - 2);
+//                    HumanEntity damager = (HumanEntity) e.getDamager();
+//                    damager.setHealth(damager.getHealth()-2);
 //            }
 //        }
 //    }

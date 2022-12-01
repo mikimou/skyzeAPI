@@ -23,7 +23,7 @@ public class onJoin implements Listener {
             p.sendMessage(ChatColor.DARK_AQUA+""+ChatColor.BOLD+"Online admini:");
             for (Player pp : Bukkit.getServer().getOnlinePlayers()) {
                 if (pp.hasPermission("skyzeapi.admin")) {
-                    p.sendMessage(ChatColor.DARK_AQUA+p.getName());
+                    p.sendMessage(ChatColor.DARK_AQUA+pp.getName());
                 }
             }
         }
