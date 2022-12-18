@@ -3,10 +3,14 @@ package me.skyze.skyzeapi.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
 public class VianoceCommand implements CommandExecutor {
@@ -17,21 +21,28 @@ public class VianoceCommand implements CommandExecutor {
         if (sender instanceof Player p) {
             //if (p.hasPermission("skyzeapi.vianoce")) {
             if (p.getName().equalsIgnoreCase("misko_22")||p.getName().equalsIgnoreCase("KingDiri")) {
-                if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
-                    p.sendMessage(ChatColor.DARK_GRAY + "----------------------------------------"); // 20x -
-                    p.sendMessage(ChatColor.DARK_GREEN + "" + ChatColor.BOLD + "    VIANOCNE PRIKAZY");
-                    p.sendMessage(ChatColor.GRAY+""+ChatColor.ITALIC + "/vianoce help"+ ChatColor.BLUE+"    Ukaze vsetky prikazy");
-                    p.sendMessage(ChatColor.GRAY+""+ChatColor.ITALIC + "/vianoce tp"+ ChatColor.BLUE+"    Teleportne ta ku stromceku");
-                    p.sendMessage(ChatColor.GRAY+""+ChatColor.ITALIC + "/darcek menohraca sprava"+ ChatColor.BLUE+"    Vytvori darcek");
-                    p.sendMessage(ChatColor.DARK_GRAY + "----------------------------------------"); // 20x -
-                } else if (args[0].equalsIgnoreCase("tp")) {
-                    Location loc = new Location(Bukkit.getWorlds().get(0), -2448, 66, 158);
-                    p.teleport(loc);
-                }
+                gui(p);
             } else {
                 p.sendMessage(ChatColor.RED + "Vianocne prikazy budu dostupne az na vianoce!");
             }
         }
         return true;
+    }
+
+    public void gui(Player p) {
+        Inventory gui = Bukkit.createInventory(p, 9, "Vianocne menu");
+        ItemStack sapling = new ItemStack(Material.SPRUCE_SAPLING, 1);
+        ItemMeta saplingMeta = sapling.getItemMeta();
+        saplingMeta.setDisplayName(ChatColor.GREEN+ "Teleport ku Vianocnemu stromceku");
+        sapling.setItemMeta(saplingMeta);
+
+        ItemStack chest = new ItemStack(Material.CHEST, 1);
+        ItemMeta chestMeta = chest.getItemMeta();
+        chestMeta.setDisplayName(ChatColor.RED+ "Vytvor darcek!");
+        chest.setItemMeta(chestMeta);
+
+        gui.addItem(sapling);
+        gui.addItem(chest);
+        p.openInventory(gui);
     }
 }

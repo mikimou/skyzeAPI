@@ -8,7 +8,14 @@ import me.skyze.skyzeapi.listeners.*;
 import me.skyze.skyzeapi.recipes.ActivatedEmeraldRecipe;
 import me.skyze.skyzeapi.recipes.FlameStickRecipe;
 import me.skyze.skyzeapi.recipes.TeleportBowRecipe;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Collection;
 
 public final class SkyzeAPI extends JavaPlugin {
 
@@ -34,8 +41,7 @@ public final class SkyzeAPI extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DraciaKrvListener(), this);
         getServer().getPluginManager().registerEvents(new VianoceListener(), this); // Vianoce
         getServer().getPluginManager().registerEvents(new onJoin(), this);
-
-        //getServer().getPluginManager().registerEvents(new onJoin(), this);
+        getServer().getPluginManager().registerEvents(new QuarryListener(), this);
 
         // Recipes
         TeleportBowRecipe.initialize(this);
@@ -50,5 +56,15 @@ public final class SkyzeAPI extends JavaPlugin {
 
     public static SkyzeAPI getPlugin() {
         return plugin;
+    }
+
+    public static void spawnParticleForEveryPlayer(Location loc, Color firstColor, Color secondColor, float size, double x, double y, double z, int count, double offX, double offY, double offZ) {
+
+        Particle.DustTransition dt = new Particle.DustTransition(firstColor, secondColor, size);
+        Collection<Player> onlinePlayers = (Collection<Player>) Bukkit.getServer().getOnlinePlayers();
+        for (Player online : onlinePlayers) {
+            online.spawnParticle(Particle.DUST_COLOR_TRANSITION, loc.add(x, y, z), count, offX, offY, offZ, dt);
+
+        }
     }
 }

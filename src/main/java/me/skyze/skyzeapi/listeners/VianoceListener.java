@@ -1,15 +1,13 @@
 package me.skyze.skyzeapi.listeners;
 
 import me.skyze.skyzeapi.SkyzeAPI;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
@@ -63,6 +61,27 @@ public class VianoceListener implements Listener {
                 data.setPower(1);
                 firework.setFireworkMeta(data);
             }
+        }
+    }
+
+    @EventHandler
+    public void onVianoceMenuClick(InventoryClickEvent e) {
+        if (e.getWhoClicked() instanceof Player p) {
+            if (e.getView().getTitle().equalsIgnoreCase("Vianocne menu")){
+                e.setCancelled(true);
+                if (e.getCurrentItem() == null){
+                    return;
+                }else if (e.getCurrentItem().getType().equals(Material.SPRUCE_SAPLING)) {
+                    p.sendMessage("Bol si teleportovany ku stromceku!");
+                    Location loc = new Location(Bukkit.getWorlds().get(0), -2448, 66, 158);
+                    p.teleport(loc);
+                    p.closeInventory();
+                } else if (e.getCurrentItem().getType().equals(Material.CHEST)) {
+                    p.sendMessage("/darcek <menohraca> <sprava>");
+                    p.closeInventory();
+                }
+            }
+
         }
     }
 }

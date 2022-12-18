@@ -2,6 +2,7 @@ package me.skyze.skyzeapi.commands;
 
 import me.skyze.skyzeapi.utility.ActivatedEmeraldUtils;
 import me.skyze.skyzeapi.utility.BowUtils;
+import me.skyze.skyzeapi.utility.DraciaKrvUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -20,6 +21,7 @@ public class DavajCommand implements CommandExecutor {
                 if (args.length == 0) {
                     p.sendMessage("/davaj tpbow");
                     p.sendMessage("/davaj aktivovany_emerald <pocet>");
+                    p.sendMessage("/davaj dracia_krv");
                 } else if (args.length > 0) {
 
                     if (args[0].equalsIgnoreCase("aktivovany_emerald")) {
@@ -40,8 +42,14 @@ public class DavajCommand implements CommandExecutor {
                     } else if (args[0].equalsIgnoreCase("tpbow")) {
                         ItemStack i = BowUtils.createTeleportBow();
                         p.getInventory().addItem(i);
+                    } else if (args[0].equalsIgnoreCase("dracia_krv")) {
+                        ItemStack i = DraciaKrvUtils.createDraciaKrv();
+                        p.getInventory().addItem(i);
+                        p.sendMessage("Givol si si draciu_krv 1x");
                     }
-                } else {p.sendMessage("ha");}
+
+
+                } else {p.sendMessage("error");}
             } else {
                 p.sendMessage(ChatColor.RED+ "Nemas povolenie na tento command!");
             }
