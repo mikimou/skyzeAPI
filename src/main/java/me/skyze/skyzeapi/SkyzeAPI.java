@@ -29,7 +29,6 @@ public final class SkyzeAPI extends JavaPlugin {
         //getServer().broadcastMessage(ChatColor.YELLOW+"Inicializuje sa skyzeAPI");
 
         // Commands
-        getCommand("grg").setExecutor(new GrgCommand());
         getCommand("davaj").setExecutor(new DavajCommand());
         getCommand("vianoce").setExecutor(new VianoceCommand()); // Vianocne
         getCommand("prirucka").setExecutor(new PriruckaCommand()); // PRIRUCKA
